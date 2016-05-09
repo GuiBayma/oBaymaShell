@@ -1,4 +1,4 @@
-all :
+runShell :
 	@echo "\n==> Removendo arquivos desnecessários";
 	rm -rf oBaymaShell oBaymaShell_BISON.tab.h oBaymaShell_BISON.tab.c lex.yy.c
 	@echo "\n==> Executando BISON para gerar código em linguagem C";
