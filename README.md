@@ -10,6 +10,7 @@ Especificações do Projeto:
   - Se o usuário digitar um comando inválido, a menssagem "Comando Invalido" será informada.
   
 Comandos e Ações:
-  LS:   lista o conteuudo do diretorio atual.
-  LL:   lista o conteuudo do diretorio atual no formato de lista.
-  QUIT: encerra o shell.
+  - LS:   lista o conteuudo do diretorio atual.
+  - PS:   lista os processos do usuario.
+  - IFCONFIG: exibe as informacoes de todas as interfaces de rede do sistema.
+  - QUIT: encerra o shell.
