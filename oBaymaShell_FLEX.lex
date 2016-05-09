@@ -9,11 +9,12 @@
 
 %%
 
-/* Entradas validas (Tokens) */
-"ls"   {return LS;}
-"ll"   {return LL;}
-"quit" {return QUIT;}
-[ \t]  {;}
-"\n"   {return FIM;}
+[ \t]        { ; }
+"ls"         { return LS; }
+"ps"         { return PS; }
+"ifconfig"   { return IFCONFIG; }
+"quit"       { return QUIT; }
+[a-zA-Z0-9]+ { yylval.sval = strdup(yytext); return STRING; }
+"\n"         { return FIM; }
 
 %%
