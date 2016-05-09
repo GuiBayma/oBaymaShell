@@ -28,6 +28,7 @@
 %token MULT;
 
 %type <ival> EXPRESSAOINT;
+%type <fval> EXPRESSAOFLOAT;
 
 %token LS
 %token PS
@@ -49,6 +50,7 @@ S:
 LINHA: FIM { exibePath(); }
 	| COMANDO FIM { exibePath(); }
 	| EXPRESSAOINT FIM { printf("%d\n",$1); exibePath(); }
+	| EXPRESSAOFLOAT FIM { printf("%f\n",$1); exibePath(); }
 ;
 
 COMANDO: LS            { system("ls"); }
@@ -67,9 +69,27 @@ EXPRESSAOINT: INT                        { $$ = $1; }
 	| EXPRESSAOINT SOMA EXPRESSAOINT { $$ = $1 + $3; }
 	| EXPRESSAOINT SUB EXPRESSAOINT  { $$ = $1 - $3; }
 	| EXPRESSAOINT MULT EXPRESSAOINT { $$ = $1 * $3; }
-	| EXPRESSAOINT DIV EXPRESSAOINT  { $$ = $1 / $3; }
+	| EXPRESSAOINT DIV EXPRESSAOINT  { 
+					 	if ($3 != 0) {
+							$$ = $1 / $3;
+						} else {
+							printf("Erro. Divisao por zero.\n");
+						}
+					 }
 ;
 
+EXPRESSAOFLOAT: FLOAT                        { $$ = $1; }
+	| EXPRESSAOFLOAT SOMA EXPRESSAOFLOAT { $$ = $1 + $3; }
+	| EXPRESSAOFLOAT SUB EXPRESSAOFLOAT  { $$ = $1 - $3; }
+	| EXPRESSAOFLOAT MULT EXPRESSAOFLOAT { $$ = $1 * $3; }
+	| EXPRESSAOFLOAT DIV EXPRESSAOFLOAT  { 
+					     	if ($3 != 0) {
+							$$ = $1 / $3;
+						} else {
+							printf("Erro. Divisao por zero.\n");
+						}
+					     }
+;
 %%
 
 int main(int argc, char **argv) {
