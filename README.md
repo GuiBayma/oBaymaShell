@@ -12,5 +12,12 @@ Especificações do Projeto:
 Comandos e Ações:
   - LS:   lista o conteuudo do diretorio atual.
   - PS:   lista os processos do usuario.
+  - KILL ID: mata o processo de nuumero ID.
+  - MKDIR ID: cria um diretorio com nome ID.
+  - RMDIR ID: remove diretorio de nome ID.
+  - CD ID: torna o diretorio ID como atual.
+  - TOUCH ID: cria um arquivo com o nome ID.
   - IFCONFIG: exibe as informacoes de todas as interfaces de rede do sistema.
+  - START ID: invoca a execucao do programa ID.
   - QUIT: encerra o shell.
+  - Funcao Calculadora: recebe uma expressao matematica e exibe o resultado (+,-,* e /).
