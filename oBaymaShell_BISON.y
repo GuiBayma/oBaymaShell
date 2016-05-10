@@ -59,7 +59,14 @@ COMANDO: LS            { system("ls"); }
 	| KILL STRING  { printf("comando kill\n"); }
 	| MKDIR STRING { printf("comando mkdir\n"); }
 	| RMDIR STRING { printf("comando rmdir\n"); }
-	| CD STRING    { printf("comando cd\n"); }
+	| CD STRING    { 
+				   		int erro = chdir($2);
+				   		if (erro != 0) {
+				   			printf("cd: %s: Diretorio nao encontrado.\n",$2);
+				   		} else {
+				   			printf("encontrado");
+				   		}
+				   }
 	| TOUCH STRING { printf("comando touch\n"); }
 	| START STRING { printf("comando start\n"); }
 	| QUIT         { printf("Saindo do shell...\n"); exit(0); }
