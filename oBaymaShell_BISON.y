@@ -78,7 +78,11 @@ COMANDO: LS        { system("ls"); }
 				   			printf("cd: %s: Diretorio nao encontrado.\n",$2);
 				   		}
 				   }
-	| TOUCH STRING { printf("comando touch\n"); }
+	| TOUCH STRING { 
+				char arquivo[1024];
+				strcpy (arquivo,"touch ");
+				system(strcat(arquivo,$2));
+		       }
 	| START STRING { printf("comando start\n"); }
 	| QUIT         { printf("Saindo do shell...\n"); exit(0); }
 ;
