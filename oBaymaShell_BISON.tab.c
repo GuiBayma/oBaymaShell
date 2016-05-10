@@ -461,8 +461,8 @@ static const yytype_uint8 yytranslate[] =
 static const yytype_uint8 yyrline[] =
 {
        0,    46,    46,    47,    50,    51,    52,    53,    56,    57,
-      58,    59,    60,    61,    62,    70,    71,    72,    75,    76,
-      77,    78,    79,    88,    89,    90,    91,    92
+      58,    59,    65,    66,    67,    73,    74,    75,    78,    79,
+      80,    81,    82,    91,    92,    93,    94,    95
 };
 #endif
 
@@ -503,7 +503,7 @@ static const yytype_uint16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-     -22,     0,   -22,   -22,   -22,   -22,   -22,   -22,    39,    40,
+     -22,     0,   -22,   -22,   -22,   -22,   -22,   -22,    37,    40,
       41,    42,    43,    44,   -22,   -22,   -22,    28,    15,    19,
      -22,   -22,   -22,   -22,   -22,   -22,   -22,    45,    45,    45,
       45,   -22,    47,    47,    47,    47,   -22,    -6,    25,    46,
@@ -553,7 +553,7 @@ static const yytype_int8 yycheck[] =
       10,    11,    12,    13,    14,    15,    16,    17,    18,    19,
       20,     6,     7,     8,     9,     6,     7,     8,     9,    32,
       33,    34,    35,     8,     9,    20,     7,     8,     9,    20,
-       8,     9,     3,     3,     3,     3,     3,     3,    20,    -1,
+       8,     9,     5,     3,     3,     3,     3,     3,    20,    -1,
        5,     4,    -1,    -1,    -1,     9,    -1,     9
 };
 
@@ -563,7 +563,7 @@ static const yytype_uint8 yystos[] =
 {
        0,    22,     0,     4,     5,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    23,    24,    25,    26,
-       3,     3,     3,     3,     3,     3,    20,     6,     7,     8,
+       5,     3,     3,     3,     3,     3,    20,     6,     7,     8,
        9,    20,     6,     7,     8,     9,    20,    25,    25,    25,
       25,    26,    26,    26,    26
 };
@@ -1301,79 +1301,82 @@ yyreduce:
 
   case 11:
 #line 59 "oBaymaShell_BISON.y" /* yacc.c:1646  */
-    { printf("comando kill\n"); }
-#line 1306 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+    {
+						char *processo;
+						processo = malloc(sizeof(*processo) * 1024);
+						sprintf(processo,"kill %d",(yyvsp[0].ival));
+						system(processo);
+				   }
+#line 1311 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 60 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 65 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { printf("comando mkdir\n"); }
-#line 1312 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1317 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 61 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 66 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { printf("comando rmdir\n"); }
-#line 1318 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1323 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 14:
-#line 62 "oBaymaShell_BISON.y" /* yacc.c:1646  */
-    { 
+#line 67 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+    {
 				   		int erro = chdir((yyvsp[0].sval));
 				   		if (erro != 0) {
 				   			printf("cd: %s: Diretorio nao encontrado.\n",(yyvsp[0].sval));
-				   		} else {
-				   			printf("encontrado");
 				   		}
 				   }
-#line 1331 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1334 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 70 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 73 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { printf("comando touch\n"); }
-#line 1337 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1340 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 16:
-#line 71 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 74 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { printf("comando start\n"); }
-#line 1343 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1346 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 17:
-#line 72 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 75 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { printf("Saindo do shell...\n"); exit(0); }
-#line 1349 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1352 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 18:
-#line 75 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 78 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { (yyval.ival) = (yyvsp[0].ival); }
-#line 1355 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1358 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 19:
-#line 76 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 79 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { (yyval.ival) = (yyvsp[-2].ival) + (yyvsp[0].ival); }
-#line 1361 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1364 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 20:
-#line 77 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 80 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { (yyval.ival) = (yyvsp[-2].ival) - (yyvsp[0].ival); }
-#line 1367 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1370 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 21:
-#line 78 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 81 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { (yyval.ival) = (yyvsp[-2].ival) * (yyvsp[0].ival); }
-#line 1373 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1376 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 22:
-#line 79 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 82 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { 
 					 	if ((yyvsp[0].ival) != 0) {
 							(yyval.ival) = (yyvsp[-2].ival) / (yyvsp[0].ival);
@@ -1381,35 +1384,35 @@ yyreduce:
 							printf("Erro. Divisao por zero.\n");
 						}
 					 }
-#line 1385 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1388 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 23:
-#line 88 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 91 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { (yyval.fval) = (yyvsp[0].fval); }
-#line 1391 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1394 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 24:
-#line 89 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 92 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { (yyval.fval) = (yyvsp[-2].fval) + (yyvsp[0].fval); }
-#line 1397 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1400 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 25:
-#line 90 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 93 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { (yyval.fval) = (yyvsp[-2].fval) - (yyvsp[0].fval); }
-#line 1403 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1406 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 26:
-#line 91 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 94 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { (yyval.fval) = (yyvsp[-2].fval) * (yyvsp[0].fval); }
-#line 1409 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1412 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
   case 27:
-#line 92 "oBaymaShell_BISON.y" /* yacc.c:1646  */
+#line 95 "oBaymaShell_BISON.y" /* yacc.c:1646  */
     { 
 					     	if ((yyvsp[0].fval) != 0) {
 							(yyval.fval) = (yyvsp[-2].fval) / (yyvsp[0].fval);
@@ -1417,11 +1420,11 @@ yyreduce:
 							printf("Erro. Divisao por zero.\n");
 						}
 					     }
-#line 1421 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1424 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1425 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
+#line 1428 "oBaymaShell_BISON.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1649,7 +1652,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 100 "oBaymaShell_BISON.y" /* yacc.c:1906  */
+#line 103 "oBaymaShell_BISON.y" /* yacc.c:1906  */
 
 
 int main(int argc, char **argv) {

@@ -53,18 +53,21 @@ LINHA: FIM { exibePath(); }
 	| EXPRESSAOFLOAT FIM { printf("%f\n",$1); exibePath(); }
 ;
 
-COMANDO: LS            { system("ls"); }
+COMANDO: LS        { system("ls"); }
 	| PS           { system("ps"); }
 	| IFCONFIG     { system("ifconfig"); }
-	| KILL STRING  { printf("comando kill\n"); }
+	| KILL INT     {
+						char *processo;
+						processo = malloc(sizeof(*processo) * 1024);
+						sprintf(processo,"kill %d",$2);
+						system(processo);
+				   }
 	| MKDIR STRING { printf("comando mkdir\n"); }
 	| RMDIR STRING { printf("comando rmdir\n"); }
-	| CD STRING    { 
+	| CD STRING    {
 				   		int erro = chdir($2);
 				   		if (erro != 0) {
 				   			printf("cd: %s: Diretorio nao encontrado.\n",$2);
-				   		} else {
-				   			printf("encontrado");
 				   		}
 				   }
 	| TOUCH STRING { printf("comando touch\n"); }
