@@ -62,8 +62,16 @@ COMANDO: LS        { system("ls"); }
 						sprintf(processo,"kill %d",$2);
 						system(processo);
 				   }
-	| MKDIR STRING { printf("comando mkdir\n"); }
-	| RMDIR STRING { printf("comando rmdir\n"); }
+	| MKDIR STRING { 
+				char diretorio[1024];
+				strcpy (diretorio,"mkdir ");
+				system(strcat(diretorio,$2));
+		       }
+	| RMDIR STRING { 
+				char diretorio[1024];
+				strcpy (diretorio,"rmdir ");
+				system(strcat(diretorio,$2)); 
+		       }
 	| CD STRING    {
 				   		int erro = chdir($2);
 				   		if (erro != 0) {
