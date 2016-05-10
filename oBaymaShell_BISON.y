@@ -22,10 +22,10 @@
 %token <sval> STRING;
 %token <fval> FLOAT;
 %token <ival> INT;
-%token SOMA;
-%token DIV;
-%token SUB;
-%token MULT;
+%left SOMA;
+%left DIV;
+%left SUB;
+%left MULT;
 
 %type <ival> EXPRESSAOINT;
 %type <fval> EXPRESSAOFLOAT;
