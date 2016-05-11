@@ -83,7 +83,13 @@ COMANDO: LS        { system("ls"); }
 				strcpy (arquivo,"touch ");
 				system(strcat(arquivo,$2));
 		       }
-	| START STRING { printf("comando start\n"); }
+	| START STRING {
+				int pid = fork();
+				if (pid == 0) {
+					system($2);
+					exit(0);
+				}
+		       }
 	| QUIT         { printf("Saindo do shell...\n"); exit(0); }
 ;
 
